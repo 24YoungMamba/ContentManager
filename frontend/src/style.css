@@ -1,0 +1,28 @@
+:root {
+  --color-primary: #646cff;
+  --color-secondary: #242424;
+
+  --coef-width: 0.390625vw;
+  --coef-height: 0.390625vh;
+
+  --fs-title: calc(5em + var(--coef-width));
+  --fs-subtitle: calc(2.5em + var(--coef-width));
+
+  --fw-title: 800;
+  --fw-subtitle: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 62.5%;
+}
