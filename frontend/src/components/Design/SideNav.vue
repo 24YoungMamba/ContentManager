@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { ref, reactive, computed } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+const views = ref(store.state.views);
 
 const isOpen = ref(false);
 </script>
@@ -20,19 +24,22 @@ const isOpen = ref(false);
     <section class="main">
       <p class="helper-text">Main:</p>
       <ul style="height: 50vh">
-        <a href="">
+        <a @click="store.commit('CHANGE_VIEW', 'DashboardView')">
           <p v-if="isOpen">Dashboard</p>
           <img src="./assets/dashboard.svg" />
         </a>
-        <a href="">
+
+        <a @click="store.commit('CHANGE_VIEW', 'AnalyticsView')">
           <p v-if="isOpen">Analytics</p>
           <img src="./assets/chart.svg" />
         </a>
-        <a href="">
+
+        <a @click="store.commit('CHANGE_VIEW', 'WeeklyReportView')">
           <p v-if="isOpen">Weekly Report</p>
           <img src="./assets/week.svg" />
         </a>
-        <a href="">
+
+        <a @click="store.commit('CHANGE_VIEW', 'IdeasView')">
           <p v-if="isOpen">Ideas</p>
           <img src="./assets/ideas.svg" />
         </a>
@@ -102,6 +109,8 @@ a {
   align-items: center;
 
   font-size: calc(0.6vw + var(--coef-width));
+
+  cursor: pointer;
 
   & p {
     font-size: calc(0.7vw + var(--coef-width));

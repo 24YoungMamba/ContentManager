@@ -1,10 +1,18 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
+import Dashboard from "../Apps/Dashboard.vue";
+import Analytics from "../Apps/Analytics.vue";
+
+const store = useStore();
+const view = ref(store.state.view);
+</script>
 
 <template>
   <main>
-    <h1>Test</h1>
-
-    <img src="./1.svg" />
+    <Dashboard v-if="view == 'DashboardView'" />
+    <Analytics v-else-if="view == 'AnalyticsView'" />
   </main>
 </template>
 
@@ -12,8 +20,6 @@
 main {
   width: 80vw;
   height: 100vh;
-
-  /* position: fixed; */
 }
 
 h1 {
@@ -33,7 +39,7 @@ img {
 
 @media only screen and (max-width: 600px) {
   main {
-    width: 150vw;
+    width: 100vw;
   }
 } // Mobile
 </style>
